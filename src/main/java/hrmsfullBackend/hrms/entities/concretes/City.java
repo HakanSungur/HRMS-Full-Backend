@@ -1,4 +1,4 @@
-package hrmsfullBackend.hrms.entities;
+package hrmsfullBackend.hrms.entities.concretes;
 
 import javax.persistence.*;
 

@@ -1,4 +1,5 @@
-package hrmsfullBackend.hrms.entities;
+package hrmsfullBackend.hrms.entities.concretes;
+
 
 public class CV {
 
