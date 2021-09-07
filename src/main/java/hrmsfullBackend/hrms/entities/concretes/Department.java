@@ -6,28 +6,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @Entity
-@Table(name = "cvs")
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class CV {
+
+@Table(name="department")
+
+public class Department {
 
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotNull
 	private int id;
 	
-	@Column(name="cover_letter")
-	private String coverLetter;
-	
-	@Column(name="picture_letter")
-	private String pictureUrl;
-	
+	@Column(name="department_name")
+	private String departmentName;
 	
 }
