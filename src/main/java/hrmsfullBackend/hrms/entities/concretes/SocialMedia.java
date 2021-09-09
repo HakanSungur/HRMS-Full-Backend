@@ -30,9 +30,9 @@ public class SocialMedia {
 	private int id;
 	
 	@Column(name="github_url")
-	private String githubLink;
+	private String githubUrl;
 	
 	@Column(name="linkedin_url")
-	private String linkedinLink;
+	private String linkedinUrl;
 
 }
