@@ -1,7 +1,5 @@
 package hrmsfullBackend.hrms.entities.dtos.addDtos;
 
-import javax.persistence.Entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
