@@ -1,5 +1,5 @@
 package hrmsfullBackend.hrms.entities.dtos.addDtos;
-import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,12 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EducationAddDto {
+public class FavoriteAddDto {
 
 	private int id;
-    private int cVId;
-    private int schoolId;
-    private int departmentId;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private int jobSeekerId;
+    private int jobAdvertId;
 }
