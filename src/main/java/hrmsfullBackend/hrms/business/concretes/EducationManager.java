@@ -40,9 +40,10 @@ public class EducationManager implements EducationService {
 	@Override
 	public DataResult<List<Education>> getAllEducations() {
 		if(this.educationDao.findAll().isEmpty()) {
-			return new ErrorDataResult<List<Education>>("Eğitim bilgisi bulunamadı");
+			return new ErrorDataResult<List<Education>>("Eğitim bilgisi bulunamadı.");
 		}else {
-			return new DataResult<List<Education>>(this.educationDao.findAll(), true, "Eğitim bilgileri listelendi.");
+			return new SuccessDataResult<List<Education>>(this.educationDao.findAll(), "Eğitim bilgisi listelendi.");
+					
 		}
 	}
 
