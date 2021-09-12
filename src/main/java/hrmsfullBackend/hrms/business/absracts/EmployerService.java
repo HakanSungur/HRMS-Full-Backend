@@ -16,7 +16,7 @@ public interface EmployerService {
 	Result addEmployer(Employer employer);
 	Result deleteEmployer(int employerId);
 	
-	DataResult<List<Employer>> getEmployerById(int id);
+	DataResult<Employer> getEmployerById(int id);
 	//resim yükleme hata veriyor bakılacak...
 	Result uploadPicture(int employerId, MultipartFile pictureFile) throws IOException;
 	
