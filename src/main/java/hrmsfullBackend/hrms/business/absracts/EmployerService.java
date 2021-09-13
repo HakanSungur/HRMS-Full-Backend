@@ -14,13 +14,13 @@ public interface EmployerService {
 	DataResult<List<Employer>> getEmployers();
 	Result updateEmployer(Employer employer);
 	Result addEmployer(Employer employer);
-	Result deleteEmployer(int employerId);
+	Result deleteEmployer(int id);
 	
 	DataResult<Employer> getEmployerById(int id);
 	//resim yükleme hata veriyor bakılacak...
 	Result uploadPicture(int employerId, MultipartFile pictureFile) throws IOException;
 	
-	Result changeIsUpdated(boolean update, int employerId);
+	Result changeIsUpdated(boolean update, int id);
 	DataResult<List<Employer>> getEmployerByUpdatedTrue();
 	
 }
