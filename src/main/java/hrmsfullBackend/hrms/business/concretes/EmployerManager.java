@@ -117,20 +117,23 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public Result uploadPicture(int employerId, MultipartFile pictureFile) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		 var result= this.cloudinaryService.addPicture(pictureFile);
+		 var url=result.getData().get("url");
+		 Employer employer =this.employerDao.getById(employerId);
+		 employer.setPictureUrl(url.toString());
+		 this.employerDao.save(employer);
+		 return new SuccessResult("Resim ekleme işlemi başarılı!");
 	}
 
 	@Override
 	public Result changeIsUpdated(boolean update, int employerId) {
-		// TODO Auto-generated method stub
-		return null;
+		this.employerDao.changeIsUpdated(update, employerId);
+		return new SuccessResult("Resim ekleme işlemi başarılı!");
 	}
 
 	@Override
 	public DataResult<List<Employer>> getEmployerByUpdatedTrue() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SuccessDataResult<List<Employer>>(this.employerDao.getEmployerByIsUpdatedTrue(), "Bilgilerini güncellemek isteyen iş verenler başarıyla listelendi.");
 	}
 
 }
