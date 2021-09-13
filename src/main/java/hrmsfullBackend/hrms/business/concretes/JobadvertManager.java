@@ -3,6 +3,7 @@ package hrmsfullBackend.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import hrmsfullBackend.hrms.business.absracts.JobAdvertService;
@@ -32,26 +33,39 @@ public class JobadvertManager implements JobAdvertService {
 	public DataResult<List<JobAdvert>> getJobAdverts() {
 		if((long) this.jobAdvertDao.findAll().size()>0) {
 			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(), "Tüm iş ilanları listelendi.");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("İş ilanı bulunamadı.");
 		}
-		return new ErrorDataResult<List<JobAdvert>>("İş ilanı bulunamadı.");
+		
 	}
 
 	@Override
 	public DataResult<List<JobAdvert>> getSortedJobAdverts() {
-		// TODO Auto-generated method stub
-		return null;
+		Sort sort=Sort.by(Sort.Direction.ASC,"id");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(sort), "İş ilanları sıralandı.");
 	}
 
 	@Override
 	public DataResult<List<JobAdvert>> getActiveJobAdverts() {
-		// TODO Auto-generated method stub
-		return null;
+		if((long) this.jobAdvertDao.findAllByIsActiveTrue().size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAllByIsActiveTrue(), "Aktif iş ilanları listelendi.");
+			
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("İş ilanları bulunamadı");
+		}
+		
+		
 	}
 
 	@Override
 	public DataResult<List<JobAdvert>> getJobAdvertByCompanyName(String companyName) {
-		// TODO Auto-generated method stub
-		return null;
+		Sort sort=Sort.by(Sort.Direction.ASC,"id");
+		if((long) this.jobAdvertDao.getJobAdvertByEmployer_CompanyName(companyName, sort).size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByEmployer_CompanyName(companyName, sort), "İş verene ait tüm ilanlar listelendi.");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>(companyName + "İş verenine ait ilanlar bulunamadı!");
+		}
+		
 	}
 
 	@Override
