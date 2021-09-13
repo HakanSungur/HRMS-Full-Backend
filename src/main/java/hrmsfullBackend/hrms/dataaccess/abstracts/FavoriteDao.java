@@ -10,9 +10,9 @@ import hrmsfullBackend.hrms.entities.concretes.Favorite;
 
 public interface FavoriteDao extends JpaRepository<Favorite, Integer> {
 	
-	List<Favorite> getFavoriteById(int id);
+	List<Favorite> getFavoriteByJobSeekerId(int id);
 	
 	@Transactional
-	void deleteFavoriteByJoobSekeerIdAndJobAdvertId();
+	void deleteFavoriteByJoobSekeerIdAndJobAdvertId(int jobSeekerId, int jobAdvertId);
 
 }
