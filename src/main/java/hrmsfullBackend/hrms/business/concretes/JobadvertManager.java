@@ -70,8 +70,12 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<List<JobAdvert>> getJobAdvertByEmployerId(int employerId) {
-		// TODO Auto-generated method stub
-		return null;
+		Sort sort=Sort.by(Sort.Direction.ASC,"isConfirmed","id");
+		if((long) this.jobAdvertDao.getJobAdvertByEmployerId(employerId, sort).size()>0 ) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByEmployerId(employerId, sort), "İş verene ait tüm ilanlar listelendi.");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("İş verene ait ilan bulunamadı!");
+		}
 	}
 
 	@Override
