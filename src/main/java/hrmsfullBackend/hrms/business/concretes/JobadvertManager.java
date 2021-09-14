@@ -136,8 +136,11 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<JobAdvert> getJobAdvertById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if(this.jobAdvertDao.getJobAdvertById(id)==null) {
+			return new ErrorDataResult<JobAdvert>("İş ilanı bulunamadı!");
+		}else {
+			return new SuccessDataResult<JobAdvert>(this.jobAdvertDao.getJobAdvertById(id), "İş ilanı listelendi.");
+		}
 	}
 
 	@Override
