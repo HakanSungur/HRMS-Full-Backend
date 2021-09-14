@@ -2,6 +2,9 @@ package hrmsfullBackend.hrms.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import hrmsfullBackend.hrms.business.absracts.JobSeekerService;
 import hrmsfullBackend.hrms.core.services.EmailCheckService;
 import hrmsfullBackend.hrms.core.services.MernisCheckService;
@@ -15,12 +18,14 @@ import hrmsfullBackend.hrms.core.validators.EmailValidator;
 import hrmsfullBackend.hrms.dataaccess.abstracts.JobSeekerDao;
 import hrmsfullBackend.hrms.entities.concretes.JobSeeker;
 
+@Service
 public class JobSeekerManager implements JobSeekerService {
 	
 	private JobSeekerDao jobSeekerDao;
 	private MernisCheckService mernisCheckService;
 	private EmailCheckService emailCheckService;
 	
+	@Autowired
 	public JobSeekerManager(JobSeekerDao jobSeekerDao, MernisCheckService mernisCheckService,
 			EmailCheckService emailCheckService) {
 		super();
