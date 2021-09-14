@@ -3,6 +3,8 @@ package hrmsfullBackend.hrms.business.concretes;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import hrmsfullBackend.hrms.business.absracts.EmployerService;
@@ -18,12 +20,14 @@ import hrmsfullBackend.hrms.core.validators.EmailValidator;
 import hrmsfullBackend.hrms.dataaccess.abstracts.EmployerDao;
 import hrmsfullBackend.hrms.entities.concretes.Employer;
 
+@Service
 public class EmployerManager implements EmployerService {
 
 	private EmployerDao employerDao;
 	private CloudinaryService cloudinaryService;
 	private EmailCheckService emailCheckService;
 	
+	@Autowired
 	public EmployerManager(EmployerDao employerDao, CloudinaryService cloudinaryService,
 			EmailCheckService emailCheckService) {
 		super();

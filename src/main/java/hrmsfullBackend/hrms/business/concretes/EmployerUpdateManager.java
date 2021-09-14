@@ -1,5 +1,8 @@
 package hrmsfullBackend.hrms.business.concretes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import hrmsfullBackend.hrms.business.absracts.EmployerUpdateService;
 import hrmsfullBackend.hrms.core.utilities.results.DataResult;
 import hrmsfullBackend.hrms.core.utilities.results.ErrorDataResult;
@@ -9,10 +12,12 @@ import hrmsfullBackend.hrms.core.utilities.results.SuccessResult;
 import hrmsfullBackend.hrms.dataaccess.abstracts.EmployerUpdateDao;
 import hrmsfullBackend.hrms.entities.concretes.EmployerUpdate;
 
+@Service
 public class EmployerUpdateManager implements EmployerUpdateService {
 
 	private EmployerUpdateDao employerUpdateDao;
 	
+	@Autowired
 	public EmployerUpdateManager(EmployerUpdateDao employerUpdateDao) {
 		super();
 		this.employerUpdateDao = employerUpdateDao;

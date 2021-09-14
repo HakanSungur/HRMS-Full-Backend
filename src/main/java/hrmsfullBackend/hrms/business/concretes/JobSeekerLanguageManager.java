@@ -2,6 +2,9 @@ package hrmsfullBackend.hrms.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import hrmsfullBackend.hrms.business.absracts.JobSeekerLanguageService;
 import hrmsfullBackend.hrms.core.services.DtoConventerService;
 import hrmsfullBackend.hrms.core.utilities.results.DataResult;
@@ -13,12 +16,13 @@ import hrmsfullBackend.hrms.dataaccess.abstracts.JobSeekerLanguageDao;
 import hrmsfullBackend.hrms.entities.concretes.JobSeekerLanguage;
 import hrmsfullBackend.hrms.entities.dtos.addDtos.JobSeekerLanguageAddDto;
 
+@Service
 public class JobSeekerLanguageManager implements JobSeekerLanguageService{
 
 	private JobSeekerLanguageDao jobSeekerLanguageDao;
 	private DtoConventerService dtoConventerService;
 	
-	
+	@Autowired
 	public JobSeekerLanguageManager(JobSeekerLanguageDao jobSeekerLanguageDao,
 			DtoConventerService dtoConventerService) {
 		super();
