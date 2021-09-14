@@ -1,8 +1,11 @@
 package hrmsfullBackend.hrms.business.concretes;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -98,8 +101,16 @@ public class JobadvertManager implements JobAdvertService {
 	@Override
 	public DataResult<List<JobAdvert>> getJobAdvertByIsActiveTrueAndIsConfirmedTrueByPageDesc(int pageNo,
 			int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Sort sort=Sort.by(Sort.Direction.DESC,"airDate");
+		Pageable pageable=(Pageable) PageRequest.of(pageNo, pageSize,sort);
+		
+		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue().size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable), "Onaylı ve Aktif tüm iş ilanları yayınlanma tarihine göre azalarak listelendi!");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("Onaylı ve aktif iş ilanı bulunamadı!");
+		}
+		
 	}
 
 	@Override
