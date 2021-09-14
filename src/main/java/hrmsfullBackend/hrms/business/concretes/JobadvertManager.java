@@ -105,7 +105,7 @@ public class JobadvertManager implements JobAdvertService {
 		Sort sort=Sort.by(Sort.Direction.DESC,"airDate");
 		Pageable pageable=(Pageable) PageRequest.of(pageNo, pageSize,sort);
 		
-		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue().size()>0) {
+		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable).size()>0) {
 			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable), "Onaylı ve Aktif tüm iş ilanları yayınlanma tarihine göre azalarak listelendi!");
 		}else {
 			return new ErrorDataResult<List<JobAdvert>>("Onaylı ve aktif iş ilanı bulunamadı!");
@@ -118,7 +118,7 @@ public class JobadvertManager implements JobAdvertService {
 		Sort sort=Sort.by(Sort.Direction.ASC,"airDate");
 		Pageable pageable=(Pageable) PageRequest.of(pageNo, pageSize,sort);
 		
-		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue().size()>0) {
+		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable).size()>0) {
 			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable), "Onaylı ve Aktif tüm iş ilanları yayınlanma tarihine göre artarak listelendi!");
 		}else {
 			return new ErrorDataResult<List<JobAdvert>>("Onaylı ve aktif iş ilanı bulunamadı!");
@@ -127,8 +127,11 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<List<JobAdvert>> getJobAdvertByIsActiveTrueAndIsConfirmedTrue() {
-		// TODO Auto-generated method stub
-		return null;
+		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue().size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(), "Onaylı ve Aktif tüm iş ilanları listelendi!");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("Onaylı ve aktif iş ilanı bulunamadı!");
+		}
 	}
 
 	@Override
