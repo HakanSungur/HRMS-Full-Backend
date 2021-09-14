@@ -15,6 +15,7 @@ import hrmsfullBackend.hrms.core.utilities.results.DataResult;
 import hrmsfullBackend.hrms.core.utilities.results.ErrorDataResult;
 import hrmsfullBackend.hrms.core.utilities.results.Result;
 import hrmsfullBackend.hrms.core.utilities.results.SuccessDataResult;
+import hrmsfullBackend.hrms.core.utilities.results.SuccessResult;
 import hrmsfullBackend.hrms.dataaccess.abstracts.JobAdvertDao;
 import hrmsfullBackend.hrms.entities.concretes.JobAdvert;
 import hrmsfullBackend.hrms.entities.dtos.addDtos.JobAdvertAddDto;
@@ -145,26 +146,26 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public Result changeIsActive(boolean active, int id) {
-		// TODO Auto-generated method stub
-		return null;
+		this.jobAdvertDao.changeIsActive(active, id);
+		return new SuccessResult("İlan iktiflik durumu değiştirildi.");
 	}
 
 	@Override
 	public Result changeIsConfirmed(boolean confirm, int id) {
-		// TODO Auto-generated method stub
-		return null;
+		this.jobAdvertDao.changeIsConfirmed(confirm, id);
+		return new SuccessResult("İlan onay durumu değiştirildi.");
 	}
 
 	@Override
 	public Result addJobAdvert(JobAdvertAddDto jobAdvert) {
-		// TODO Auto-generated method stub
-		return null;
+		this.jobAdvertDao.save((JobAdvert) this.dtoConventerService.dtoClassConverter(jobAdvert, JobAdvertAddDto.class));
+		return new SuccessResult("İş ilanı kayıt edildi.");
 	}
 
 	@Override
 	public Result deleteJobAdvertById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		this.jobAdvertDao.deleteById(id);
+		return new SuccessResult("İş ilanı silindi.");
 	}
 
 }
