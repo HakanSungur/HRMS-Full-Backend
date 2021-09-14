@@ -80,8 +80,19 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<List<JobAdvert>> findAllByIsActiveTrue(boolean isDesc) {
-		// TODO Auto-generated method stub
-		return null;
+		Sort sort;
+		if(isDesc) {
+			sort=Sort.by(Sort.Direction.DESC,"airDate");
+		}else {
+			sort=Sort.by(Sort.Direction.ASC,"airDate");
+		}
+		if((long) this.jobAdvertDao.findAllByIsActiveTrue(sort).size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAllByIsActiveTrue(sort), "Tüm işler yayınlanma tarihine göre listelendi.");
+			
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("İş ilanları listelenemedi!");
+			
+		}
 	}
 
 	@Override
