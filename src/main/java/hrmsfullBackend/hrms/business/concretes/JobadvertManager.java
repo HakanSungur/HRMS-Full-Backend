@@ -115,8 +115,14 @@ public class JobadvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<List<JobAdvert>> getJobAdvertByIsActiveTrueAndIsConfirmedTrueByPageAsc(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		Sort sort=Sort.by(Sort.Direction.ASC,"airDate");
+		Pageable pageable=(Pageable) PageRequest.of(pageNo, pageSize,sort);
+		
+		if(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue().size()>0) {
+			return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getJobAdvertByIsActiveTrueAndIsConfirmedTrue(pageable), "Onaylı ve Aktif tüm iş ilanları yayınlanma tarihine göre artarak listelendi!");
+		}else {
+			return new ErrorDataResult<List<JobAdvert>>("Onaylı ve aktif iş ilanı bulunamadı!");
+		}
 	}
 
 	@Override
