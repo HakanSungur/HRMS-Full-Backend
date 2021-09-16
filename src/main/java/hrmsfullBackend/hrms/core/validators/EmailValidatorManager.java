@@ -1,17 +1,18 @@
 package hrmsfullBackend.hrms.core.validators;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import org.springframework.stereotype.Service;
+
+import hrmsfullBackend.hrms.entities.concretes.User;
 
 @Service
 public class EmailValidatorManager {
 
-	 public static boolean emailFormatController(String email) {
-	        final String EMAIL_PATTERN = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-	        final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-	        Matcher matcher = pattern.matcher(email);
-	        return matcher.matches();
-	    }
+	public String emailValidator(User user) {
+        return "Doğrulama kodu " + user.getEmail() + " adresine gönderildi";
+        
+    }
+	
+	 
 }
