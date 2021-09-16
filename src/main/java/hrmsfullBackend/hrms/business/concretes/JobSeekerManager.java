@@ -14,7 +14,7 @@ import hrmsfullBackend.hrms.core.utilities.results.ErrorResult;
 import hrmsfullBackend.hrms.core.utilities.results.Result;
 import hrmsfullBackend.hrms.core.utilities.results.SuccessDataResult;
 import hrmsfullBackend.hrms.core.utilities.results.SuccessResult;
-import hrmsfullBackend.hrms.core.validators.EmailValidator;
+import hrmsfullBackend.hrms.core.validators.EmailValidatorManager;
 import hrmsfullBackend.hrms.dataaccess.abstracts.JobSeekerDao;
 import hrmsfullBackend.hrms.entities.concretes.JobSeeker;
 
@@ -56,7 +56,7 @@ public class JobSeekerManager implements JobSeekerService {
 	@Override
 	public Result addJobSeeker(JobSeeker jobSeeker) {
 		try {
-			if(!EmailValidator.emailFormatController(jobSeeker.getEmail())) {
+			if(!EmailValidatorManager.emailFormatController(jobSeeker.getEmail())) {
 				return new ErrorResult("Email formata uygun değil!");
 			}else if(!mernisCheckService.isMernis(jobSeeker)){
 				return new ErrorResult("Kimlik bilgisi doğrulanamadı!");

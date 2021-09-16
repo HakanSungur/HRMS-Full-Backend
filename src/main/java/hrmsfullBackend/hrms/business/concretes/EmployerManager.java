@@ -16,7 +16,7 @@ import hrmsfullBackend.hrms.core.utilities.results.ErrorResult;
 import hrmsfullBackend.hrms.core.utilities.results.Result;
 import hrmsfullBackend.hrms.core.utilities.results.SuccessDataResult;
 import hrmsfullBackend.hrms.core.utilities.results.SuccessResult;
-import hrmsfullBackend.hrms.core.validators.EmailValidator;
+import hrmsfullBackend.hrms.core.validators.EmailValidatorManager;
 import hrmsfullBackend.hrms.dataaccess.abstracts.EmployerDao;
 import hrmsfullBackend.hrms.entities.concretes.Employer;
 
@@ -52,7 +52,7 @@ public class EmployerManager implements EmployerService {
 		String[] employerEmail=employer.getEmail().split("@");
 		String employerDomain=employerEmail[1];
 		try {
-			if(!EmailValidator.emailFormatController(employer.getEmail())) {
+			if(!EmailValidatorManager.emailFormatController(employer.getEmail())) {
 				return new ErrorResult("E-Mail formata uygun değil");
 			}else if(! webSite.contains("www.")&& webSite.contains(".")) {
 				return new ErrorResult("Website adresi formata uygun değil. ÖRN: www.google.com");
@@ -80,7 +80,7 @@ public class EmployerManager implements EmployerService {
 		String[] employerEmail=employer.getEmail().split("@");
 		String employerDomain=employerEmail[1];
 		try {
-			if(!EmailValidator.emailFormatController(employer.getEmail())) {
+			if(!EmailValidatorManager.emailFormatController(employer.getEmail())) {
 				return new ErrorResult("E-Mail formata uygun değil");
 			}else if(! webSite.contains("www.")&& webSite.contains(".")) {
 				return new ErrorResult("Website adresi formata uygun değil. ÖRN: www.google.com");
