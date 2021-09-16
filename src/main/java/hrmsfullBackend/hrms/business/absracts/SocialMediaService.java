@@ -1,5 +1,7 @@
 package hrmsfullBackend.hrms.business.absracts;
 
+
+
 import hrmsfullBackend.hrms.core.utilities.results.DataResult;
 import hrmsfullBackend.hrms.core.utilities.results.Result;
 import hrmsfullBackend.hrms.entities.concretes.SocialMedia;
@@ -10,5 +12,5 @@ public interface SocialMediaService {
 
 	Result addSocialMedia(SocialMediaAddDto socialMedia);
     Result updateSocialMedia(SocialMediaUpdateDto socialMedia);
-    DataResult<SocialMedia> getSocialMediaByCurriculaVitaeId(int id);
+    DataResult <SocialMedia> getSocialMediaByCurriculaVitaeId(int id);
 }
