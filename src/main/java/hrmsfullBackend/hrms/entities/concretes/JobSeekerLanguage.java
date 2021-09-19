@@ -1,10 +1,13 @@
 package hrmsfullBackend.hrms.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -38,4 +41,12 @@ public class JobSeekerLanguage {
 	@NotNull
 	@NotBlank
 	private int languageDegree;
+	
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name="language_id")
+	private Language language;
+	
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name="cv_id")
+	private CV cV;
 }
