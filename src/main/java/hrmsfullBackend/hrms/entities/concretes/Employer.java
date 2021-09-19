@@ -1,11 +1,16 @@
 package hrmsfullBackend.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,4 +43,8 @@ public class Employer extends User {
 	
 	@Column(name="is_update")
 	private boolean isUpdate=false;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvert> jobAdverts;
 }
