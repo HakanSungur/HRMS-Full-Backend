@@ -1,5 +1,9 @@
 package hrmsfullBackend.hrms.entities.concretes;
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +13,13 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 @Data
 @AllArgsConstructor
+@Table(name="cities")
 @NoArgsConstructor
 public class City {
 	
 	@Id
 	@NotNull
-	@Column(name="cities")
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
@@ -22,11 +27,10 @@ public class City {
 	@NotNull
 	private String cityName;
 	
-	/*
-	 * Bu kısıma ilişkilendirme yapılacak.
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "city")
 	private List<JobAdvert> jobadverts;
-	*/
+	
 
 }
