@@ -42,7 +42,7 @@ public class JobSeeker extends User {
 	@NotNull
 	private String identityNumber;
 	
-	@Column(name="birth_name")
+	@Column(name="birth_date")
 	@NotNull
 	private LocalDate birthDate;
 	
