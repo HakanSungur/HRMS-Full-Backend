@@ -1,4 +1,4 @@
-package hrmsfullBackend.hrms.api.controllers;
+package hrmsfullBackend.hrms.core.controllers;
 
 import java.io.IOException;
 import java.util.List;

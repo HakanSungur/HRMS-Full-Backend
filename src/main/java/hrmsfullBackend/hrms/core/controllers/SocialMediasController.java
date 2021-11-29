@@ -1,4 +1,4 @@
-package hrmsfullBackend.hrms.api.controllers;
+package hrmsfullBackend.hrms.core.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
